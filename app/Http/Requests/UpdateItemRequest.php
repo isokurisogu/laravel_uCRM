@@ -9,9 +9,9 @@ class UpdateItemRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateItemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'max:50'],
+            'memo' => ['required', 'max:255'],
+            'price' => ['required', 'numeric'],
+            'is_selling' => ['required', 'boolean']
         ];
     }
 }
